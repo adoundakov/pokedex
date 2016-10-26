@@ -1,8 +1,7 @@
-export const fetchAllPokemon = (success,error) => {
+export const fetchAllPokemon = (success) => {
   $.ajax({
     method: "GET",
     url: "/api/pokemon",
-    success,
-    error
+    success
   });
 };
