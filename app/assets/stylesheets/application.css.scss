@@ -41,3 +41,25 @@ header {
 		margin-right: -10px;
 	}
 }
+
+.pokedex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pokemon-detail {
+	float: left;
+}
+
+.pokedex ul {
+	float: left;
+}
+
+.pokemon-index-item {
+	border: 1px solid gray;
+}
+
+.pokemon-index-item img {
+	width: 50px;
+	height: auto;
+}

@@ -10,10 +10,10 @@ const PokemonMiddleware = ({ dispatch }) => next => action => {
   switch(action.type) {
     case REQUEST_ALL_POKEMON:
       fetchAllPokemon(fetchAllSuccess);
-      return next(action);
+      break;
     case REQUEST_A_POKEMON:
       fetchAPokemon(action.id, fetchASuccess);
-      return next(action);
+      break;
     default:
       return next(action);
   }

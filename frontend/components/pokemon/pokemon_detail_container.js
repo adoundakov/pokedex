@@ -1,11 +1,8 @@
 import {connect} from 'react-redux';
 import PokemonDetail from './pokemon_detail';
-import {selectAPokemon} from '../../reducers/selectors';
 
 const mapStateToProps = (state) => ({
-  pokemonDetail: selectAPokemon(state)
+  pokemonDetail: state.pokemonDetail
 });
 
-export default connect(
-  mapStateToProps
-)(PokemonDetail);
+export default connect(mapStateToProps)(PokemonDetail);

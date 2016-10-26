@@ -3,19 +3,17 @@ import { withRouter } from 'react-router';
 
 const PokemonIndexItem = ({pokemon, router}) => {
 
-  const handleClick = url => e => {
-    // dispatch()
-    return router.push(url);
-  };
+  const handleClick = url => e => (router.push(url));
 
   return (
-  <li key={pokemon.id}
-      className="pokemon-index-item"
-      onClick={handleClick(`/pokemon/${pokemon.id}`)}>
-    <span>{pokemon.name}</span>
-    <img src={pokemon.image_url} />
-  </li>
-);
+    <li className="pokemon-index-item"
+        key={pokemon.id}
+        onClick={handleClick(`/pokemon/${pokemon.id}`)}>
+      <span>{pokemon.id}</span>
+      <img src={pokemon.image_url} />
+      <span>{pokemon.name}</span>
+    </li>
+  );
 };
 
 export default withRouter(PokemonIndexItem);

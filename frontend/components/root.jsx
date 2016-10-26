@@ -5,17 +5,14 @@ import PokemonDetailContainer from './pokemon/pokemon_detail_container';
 import { Router, Route, hashHistory } from 'react-router';
 import { requestAllPokemon,requestAPokemon } from '../actions/pokemon_actions';
 
-const Root = (props) => {
-  console.log(props);
-  const store = props.store;
-
+const Root = ({store}) => {
   const requestAllOnEnter = () => {
     store.dispatch(requestAllPokemon());
   };
 
-  const requestOneOnEnter = () => {
-    // console.log(store.getState());
-    store.dispatch(requestAPokemon(store.params.id));
+  const requestOneOnEnter = nextState => {
+    console.log(nextState);
+    store.dispatch(requestAPokemon(nextState.params.pokemonId));
   };
 
   return (
@@ -27,7 +24,8 @@ const Root = (props) => {
           onEnter={requestAllOnEnter}>
             <Route
               path="/pokemon/:pokemonId"
-              component={PokemonDetailContainer} />
+              component={PokemonDetailContainer}
+              onEnter={requestOneOnEnter}></Route>
         </Route>
       </Router>
     </Provider>
