@@ -3,8 +3,8 @@ import PokemonForm from './pokemon_form';
 import {createNewPokemon} from '../../actions/pokemon_actions';
 import {findLastId} from '../../reducers/selectors';
 
-const mapStateToProps = ({pokemon}) => ({
-  pokemon
+const mapStateToProps = (state) => ({
+  errors: state.errors
 });
 
 const mapDispatchToProps = (dispatch) => ({

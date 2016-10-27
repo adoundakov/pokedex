@@ -10,9 +10,6 @@ import { requestAllPokemon,requestAPokemon } from '../actions/pokemon_actions';
 
 const Root = ({store}) => {
   const requestAllOnEnter = () => {
-    // console.log(store.getState().pokemon);
-    // if (store.getState().pokemon.length < 1) {
-    // }
     store.dispatch(requestAllPokemon());
   };
 

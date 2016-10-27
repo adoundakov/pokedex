@@ -1,13 +1,10 @@
 import React from 'react';
-import {withRouter} from 'react-router';
-import {findLastId} from '../../reducers/selectors';
 
 class PokemonForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log(findLastId(this.props.pokemon));
     this.state = {
-      name: '', attack: '', defense: '', image_url: '', moves: [], items: [], poke_type: 'fire'
+      name: '', attack: '', defense: '', image_url: '', moves: "", items: [], poke_type: 'fire'
     };
     this.update = this.update.bind(this);
   }
@@ -19,16 +16,8 @@ class PokemonForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // deals with submitting form and dispatching create action
     e.preventDefault();
     this.props.createNewPokemon(this.state);
-    this.props.router.push(`/pokemon/${findLastId(this.props.pokemon)}`);
-  }
-
-  clearForm() {
-    this.setState = {
-      name: '', attack: '', defense: '', image_url: '', moves: [], items: [], poke_type: ''
-    };
   }
 
   render() {
@@ -38,18 +27,24 @@ class PokemonForm extends React.Component {
     let typeOptions = types.map((type, idx) => (
       <option key={idx} value={type}>{type}</option>)
       );
+    let errors = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
 
     return (
       <form className='pokemon-form'>
         <h2>Create a Pokemon!</h2>
-        <input type='text'placeholder='Name' onChange={this.update('name')}/>
-        <select onChange={this.update('poke_type')}>
+
+        <ul>{errors}</ul><br/>
+        
+        <input type='text'placeholder='Name' onChange={this.update('name')}/><br/>
+        <text>Select type</text><select onChange={this.update('poke_type')}>
           {typeOptions}
-        </select>
-        <input type='text'placeholder='Attack' onChange={this.update('attack')}/>
-        <input type='text'placeholder='Defense' onChange={this.update('defense')}/>
-        <input type='text'placeholder='Moves (sep by comma)' onChange={this.update('moves')}/>
-        <input type='text'placeholder='Image URL' onChange={this.update('image_url')}/>
+        </select><br/>
+        <input type='text'placeholder='Attack' onChange={this.update('attack')}/><br/>
+        <input type='text'placeholder='Defense' onChange={this.update('defense')}/><br/>
+        <input type='text'placeholder='Moves (sep by comma)' onChange={this.update('moves')}/><br/>
+        <input type='text'placeholder='Image URL' onChange={this.update('image_url')}/><br/>
         <button onClick={this.handleSubmit.bind(this)}>Submit</button>
       </form>
     );
@@ -57,4 +52,4 @@ class PokemonForm extends React.Component {
 }
 
 
-export default withRouter(PokemonForm);
+export default PokemonForm;

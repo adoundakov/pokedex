@@ -11,12 +11,15 @@ class Api::PokemonController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(poke_params)
-    moves = poke_params[:moves].split(',')
+    moves = poke_params[:moves].split(',') unless moves.nil?
     items = Array.new(3) {Item.all.sample}
     @pokemon.items = items
     @pokemon.moves = moves
-    @pokemon.save
-    render :show
+    if @pokemon.save
+      render :show
+    else
+      render json: @pokemon.errors.full_messages, status: 422
+    end
   end
 
   private
