@@ -8,7 +8,10 @@ import {REQUEST_ALL_POKEMON,
         receivePokemonErrors} from '../actions/pokemon_actions';
 import {hashHistory} from 'react-router';
 
-const PokemonMiddleware = ({ dispatch }) => next => action => {
+const PokemonMiddleware = (store) => next => action => {
+  const dispatch = store.dispatch;
+  let pokemon = store.getState().pokemon;
+  
   const fetchAllSuccess = data => dispatch(receiveAllPokemon(data));
   const fetchASuccess = data => dispatch(receiveAPokemon(data));
   const createNewSuccess = data => {
@@ -20,10 +23,10 @@ const PokemonMiddleware = ({ dispatch }) => next => action => {
   switch(action.type) {
     case REQUEST_ALL_POKEMON:
       fetchAllPokemon(fetchAllSuccess);
-      break;
+      return next(action);
     case REQUEST_A_POKEMON:
       fetchAPokemon(action.id, fetchASuccess);
-      break;
+      return next(action);
     case CREATE_NEW_POKEMON:
       createNewPokemon(action.pokemon, createNewSuccess, createNewError);
       return next(action);

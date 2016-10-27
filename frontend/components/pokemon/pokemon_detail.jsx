@@ -4,7 +4,7 @@ import Item from '../items/item';
 
 const PokemonDetail = ({ pokemonDetail, children }) => {
 	let items = pokemonDetail.items;
-	console.log(pokemonDetail);
+	// console.log(pokemonDetail);
 	return (
 			<section className="pokemon-detail">
 				<ul>
