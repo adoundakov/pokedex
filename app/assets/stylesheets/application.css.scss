@@ -42,6 +42,10 @@ header {
 	}
 }
 
+.toys {
+	display: block;
+}
+
 .pokedex {
 	display: flex;
 	justify-content: space-between;
@@ -49,6 +53,7 @@ header {
 
 .pokemon-detail {
 	float: left;
+	min-width: 66%;
 }
 
 .pokedex ul {

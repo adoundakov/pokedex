@@ -1,6 +1,10 @@
 import React from 'react';
+import ItemDetail from '../items/item_detail';
+import Item from '../items/item';
 
-const PokemonDetail = ({ pokemonDetail, items, children }) => {
+const PokemonDetail = ({ pokemonDetail, children }) => {
+	let items = pokemonDetail.items;
+	console.log(pokemonDetail);
 	return (
 			<section className="pokemon-detail">
 				<ul>
@@ -11,19 +15,15 @@ const PokemonDetail = ({ pokemonDetail, items, children }) => {
 						<li>Defense: {pokemonDetail.defense}</li>
 						<li>Moves: {pokemonDetail.moves.join(', ')}</li>
 				</ul>
+				<section className="toys">
+					<h3>Items</h3>
+					<ul className="toy-list">
+						{items.map((item) => <Item key={item.name} pokemonId={pokemonDetail.id} item={item}/>)}
+					</ul>
+				</section>
 				{children}
 			</section>
 		);
 };
 
 export default PokemonDetail;
-
-
-// TODO: IMPLEMENT WHEN ITEMS DONE
-// <section className="toys">
-//   <h3>Items</h3>
-//   <ul className="toy-list">
-//     {items.map((item) => <Item key={item.name} item={item}/>)}
-//   </ul>
-// </section>
-// {children}
