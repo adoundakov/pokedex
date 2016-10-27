@@ -9,6 +9,11 @@ class Api::PokemonController < ApplicationController
     render :show
   end
 
+  def create
+    @pokemon = Pokemon.new(poke_params).save
+    render :show
+  end
+
   private
 
   def poke_params
