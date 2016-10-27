@@ -14,11 +14,11 @@ export const fetchAPokemon = (id, success) => {
   });
 };
 
-export const createPokemon = (formInfo, success) => {
+export const createNewPokemon = (pokemon, success) => {
   $.ajax({
     method: "POST",
     url: "/api/pokemon/",
-    data: formInfo,
+    data: {pokemon},
     datatype: "JSON",
     success
   });

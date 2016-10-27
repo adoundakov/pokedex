@@ -14,3 +14,7 @@ export const selectPokemonItem = (state, targetId) => {
   }
   return {};
 };
+
+export const findLastId = (pokemon) => {
+  return (Math.max.apply(null,Object.keys(pokemon))+1);
+};

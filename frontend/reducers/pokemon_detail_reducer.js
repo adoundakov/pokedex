@@ -1,4 +1,4 @@
-import {RECEIVE_A_POKEMON} from '../actions/pokemon_actions';
+import {RECEIVE_A_POKEMON, RECEIVE_NEW_POKEMON} from '../actions/pokemon_actions';
 
 const defaultState = {
   image_url: '',
@@ -14,6 +14,8 @@ const PokemonDetailReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_A_POKEMON:
+      return action.pokemon;
+    case RECEIVE_NEW_POKEMON:
       return action.pokemon;
     default:
       return state;

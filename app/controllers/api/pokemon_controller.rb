@@ -10,7 +10,12 @@ class Api::PokemonController < ApplicationController
   end
 
   def create
-    @pokemon = Pokemon.new(poke_params).save
+    @pokemon = Pokemon.new(poke_params)
+    moves = poke_params[:moves].split(',')
+    items = Array.new(3) {Item.all.sample}
+    @pokemon.items = items
+    @pokemon.moves = moves
+    @pokemon.save
     render :show
   end
 

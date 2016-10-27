@@ -8,8 +8,10 @@ import { RECEIVE_ALL_POKEMON,
          receiveAllPokemon,
          requestAllPokemon,
          requestAPokemon} from './actions/pokemon_actions';
-import {fetchAllPokemon, fetchAPokemon} from './util/api_util';
-import {selectAllPokemon} from './reducers/selectors';
+import {fetchAllPokemon,
+        fetchAPokemon,
+        createNewPokemon} from './util/api_util';
+import {selectAllPokemon, findLastId} from './reducers/selectors';
 import PokemonDetail from './components/pokemon/pokemon_detail';
 window.fetchAllPokemon = fetchAllPokemon;
 window.fetchAPokemon = fetchAPokemon;
@@ -17,6 +19,8 @@ window.receiveAllPokemon = receiveAllPokemon;
 window.requestAllPokemon = requestAllPokemon;
 window.requestAPokemon = requestAPokemon;
 window.selectAllPokemon = selectAllPokemon;
+window.createNewPokemon = createNewPokemon;
+window.findLastId = findLastId;
 // TESTING -----------------------------------------------------------
 
 

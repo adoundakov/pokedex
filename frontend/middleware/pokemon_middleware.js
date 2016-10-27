@@ -1,4 +1,4 @@
-import {fetchAllPokemon, fetchAPokemon, createPokemon} from '../util/api_util';
+import {fetchAllPokemon, fetchAPokemon, createNewPokemon} from '../util/api_util';
 import {REQUEST_ALL_POKEMON,
         receiveAllPokemon,
         REQUEST_A_POKEMON,
@@ -18,8 +18,8 @@ const PokemonMiddleware = ({ dispatch }) => next => action => {
       fetchAPokemon(action.id, fetchASuccess);
       break;
     case CREATE_NEW_POKEMON:
-      createPokemon(action.pokemon, createNewSuccess);
-      break;
+      createNewPokemon(action.pokemon, createNewSuccess);
+      return next(action);
     default:
       return next(action);
   }

@@ -2,12 +2,17 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import PokemonIndexContainer from './pokemon/pokemon_index_container';
 import PokemonDetailContainer from './pokemon/pokemon_detail_container';
+import PokemonFormContainer from './pokemon/pokemon_form_container';
+import PokemonForm from './pokemon/pokemon_form';
 import ItemDetailContainer from './items/item_detail_container';
-import { Router, Route, hashHistory } from 'react-router';
+import { IndexRoute, Router, Route, hashHistory } from 'react-router';
 import { requestAllPokemon,requestAPokemon } from '../actions/pokemon_actions';
 
 const Root = ({store}) => {
   const requestAllOnEnter = () => {
+    // console.log(store.getState().pokemon);
+    // if (store.getState().pokemon.length < 1) {
+    // }
     store.dispatch(requestAllPokemon());
   };
 
@@ -22,6 +27,7 @@ const Root = ({store}) => {
           path="/"
           component={PokemonIndexContainer}
           onEnter={requestAllOnEnter}>
+        <IndexRoute component={PokemonFormContainer}/>
             <Route
               path="/pokemon/:pokemonId"
               component={PokemonDetailContainer}
