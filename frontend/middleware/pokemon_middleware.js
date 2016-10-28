@@ -11,15 +11,18 @@ import {hashHistory} from 'react-router';
 const PokemonMiddleware = (store) => next => action => {
   const dispatch = store.dispatch;
   let pokemon = store.getState().pokemon;
-  
-  const fetchAllSuccess = data => dispatch(receiveAllPokemon(data));
-  const fetchASuccess = data => dispatch(receiveAPokemon(data));
+
+  const fetchAllSuccess = data => {
+    dispatch(receiveAllPokemon(data));
+  };
+  const fetchASuccess = data => {
+    dispatch(receiveAPokemon(data));
+  };
   const createNewSuccess = data => {
     dispatch(receiveNewPokemon(data));
     hashHistory.push(`/pokemon/${data.id}`);
   };
   const createNewError = error => dispatch(receivePokemonErrors(error));
-
   switch(action.type) {
     case REQUEST_ALL_POKEMON:
       fetchAllPokemon(fetchAllSuccess);

@@ -5,10 +5,10 @@ import ErrorsReducer from './errors_reducer';
 import LoadingReducer from './loading_reducer';
 
 const RootReducer = combineReducers({
-  loading: LoadingReducer,
   pokemon: PokemonReducer,
   pokemonDetail: PokemonDetailReducer,
-  errors: ErrorsReducer
+  errors: ErrorsReducer,
+  loading: LoadingReducer
 });
 
 export default RootReducer;

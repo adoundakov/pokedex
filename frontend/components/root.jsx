@@ -9,26 +9,17 @@ import { IndexRoute, Router, Route, hashHistory } from 'react-router';
 import { requestAllPokemon,requestAPokemon } from '../actions/pokemon_actions';
 
 const Root = ({store}) => {
-  const requestAllOnEnter = () => {
-    store.dispatch(requestAllPokemon());
-  };
-
-  const requestOneOnEnter = nextState => {
-    store.dispatch(requestAPokemon(nextState.params.pokemonId));
-  };
-
+  // on enter hooks moved to componentDidMount lifecycle methods
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route
           path="/"
-          component={PokemonIndexContainer}
-          onEnter={requestAllOnEnter}>
+          component={PokemonIndexContainer}>
         <IndexRoute component={PokemonFormContainer}/>
             <Route
               path="/pokemon/:pokemonId"
-              component={PokemonDetailContainer}
-              onEnter={requestOneOnEnter}>
+              component={PokemonDetailContainer}>
               <Route path="toy/:itemId" component={ItemDetailContainer}/>
             </Route>
         </Route>

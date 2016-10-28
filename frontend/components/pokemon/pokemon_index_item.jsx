@@ -1,14 +1,10 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 
-const PokemonIndexItem = ({pokemon, router}) => {
-
-  const handleClick = url => e => (router.push(url));
-
+const PokemonIndexItem = ({pokemon, handleClick}) => {
   return (
     <li className="pokemon-index-item"
         key={pokemon.id}
-        onClick={handleClick(`/pokemon/${pokemon.id}`)}>
+        onClick={handleClick(pokemon.id)}>
       <span>{pokemon.id}</span>
       <img src={pokemon.image_url} />
       <span>{pokemon.name}</span>
@@ -16,4 +12,4 @@ const PokemonIndexItem = ({pokemon, router}) => {
   );
 };
 
-export default withRouter(PokemonIndexItem);
+export default PokemonIndexItem;
