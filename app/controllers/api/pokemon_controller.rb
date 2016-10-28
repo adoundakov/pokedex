@@ -1,12 +1,12 @@
 class Api::PokemonController < ApplicationController
   def index
-    sleep 2
+    sleep 2 # simulate latency
     @pokemon = Pokemon.all
     render :index
   end
 
   def show
-    sleep 1
+    sleep 2 # simulate latency
     @pokemon = Pokemon.find(params[:id])
     render :show
   end

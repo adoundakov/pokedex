@@ -1,12 +1,19 @@
 import React from 'react';
 import ItemDetail from '../items/item_detail';
 import Item from '../items/item';
+import {withRouter} from 'react-router';
 
 class PokemonDetail extends React.Component {
 	constructor(props) {
 		super(props);
-		this.pokemonDetail = this.props.pokemonDetail;
-		this.children = this.props.children;
+		this.router = props.router;
+		this.requestAPokemon = props.requestAPokemon;
+	}
+
+	componentDidMount() {
+		if (this.props.pokemonDetail.id === undefined) {
+			this.requestAPokemon(this.router.params.pokemonId);
+		}
 	}
 
 	render() {
@@ -33,4 +40,4 @@ class PokemonDetail extends React.Component {
 	}
 }
 
-export default PokemonDetail;
+export default withRouter(PokemonDetail);

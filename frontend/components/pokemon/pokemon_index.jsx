@@ -16,7 +16,7 @@ class PokemonIndex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.requestAllPokemon();
   }
 
@@ -36,7 +36,7 @@ class PokemonIndex extends React.Component {
       </div>
     );
     return (
-      <body>
+      <section>
         <nav><ul><li><Link to={'/'}>Pokedex</Link></li></ul></nav>
         <section className="pokedex">
           {this.props.loading ? spinner : ''}
@@ -49,7 +49,7 @@ class PokemonIndex extends React.Component {
           </ul>
           {this.props.children}
         </section>
-      </body>
+      </section>
     );
   }
 }
